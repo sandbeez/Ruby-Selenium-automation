@@ -2,25 +2,27 @@
  require 'rubygems'
  require 'watir-webdriver'
  require_relative 'adoption_helper'
+ require "logger"
  include AdoptionHelper
- 
 
 
-
+	logger = Logger.new(STDOUT)
+	logger.level = Logger::DEBUG
 	go_to_puppy_site
+	logger.debug "Navigated and logged in to the puppy site"
 	select_puppy_number 1
-	puts 'first puppy selected'
+	logger.debug "first puppy selected"
 	continue_adopting_puppies
 	select_puppy_number 2
-	puts 'Second puppy selected'
+	logger.debug  "Second puppy selected"
 	click_complete_adoption
-	puts 'click on complete button'
+	logger.debug "click on complete button"
 	complete_purchase('Attu', '123 bubu st', 'attu@email.com', 'Check')
-	puts 'Successfully submitted order'
+	logger.debug "Successfully submitted order"
 	assertion
-	puts 'return true'
+	logger.debug ("Assert that:"+ @successMessage + "message is displayed")
 	close_browser
-	puts 'Closing the browser'
+	logger.debug "Closing the browser"
 
 
 

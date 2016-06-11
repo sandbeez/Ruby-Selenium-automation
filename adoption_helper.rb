@@ -4,7 +4,7 @@ module AdoptionHelper
 	def go_to_puppy_site
 	  	@browser = Watir::Browser.new :firefox
 	 	@browser.goto 'http://puppies.herokuapp.com'
-	 	puts 'Successfully navigated to puppies site'
+	 	
 	end
 
 
@@ -30,7 +30,7 @@ module AdoptionHelper
 	def assertion
 		@successMessage = 'Thank you for adopting a puppy!'
 		fail 'Browser text did not match the assertion text' unless @browser.text.include? @successMessage
-		puts "#{@successMessage}"
+		
 	end
 
 	def close_browser
